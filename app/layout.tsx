@@ -6,7 +6,7 @@ import { Title } from "./components/Title";
 
 import "./styles/globals.css";
 import styles from "./styles/layout.module.css";
-import AddBook from "./components/AddBook";
+import AddBookModal from "./components/AddBook";
 import BookList from "./components/BookList";
 
 interface Props {
@@ -31,7 +31,7 @@ export default function RootLayout({ children }: Props) {
             <Title />
           </section>
           <section className={styles.container}>
-            <AddBook isOpen={isAddBookOpen} onClose={handleCloseAddBook} />
+            <AddBookModal isOpen={isAddBookOpen} onClose={handleCloseAddBook} />
             <button className={styles.addButton} onClick={handleOpenAddBook}>Add a book</button>
           </section>
           <section className={styles.container}>
