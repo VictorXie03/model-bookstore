@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateBook } from '../reducers/booksReducer';
+import { deleteBook } from '../reducers/booksReducer';
 import { Book } from '../types';
 import styles from '../styles/layout.module.css';
-import { deleteBook } from '../reducers/booksReducer';
 
 interface BookProps {
     book: Book;
@@ -11,7 +11,7 @@ interface BookProps {
 
 const BookItem = ({ book }: BookProps) => {
     const dispatch = useDispatch();
-    const [isUpdating, setIsUpdating] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [updatedBook, setUpdatedBook] = useState<Book>({ ...book });
 
     const handleInputChange = (
@@ -26,7 +26,7 @@ const BookItem = ({ book }: BookProps) => {
 
     const handleUpdate = () => {
         dispatch(updateBook(updatedBook));
-        setIsUpdating(false);
+        setIsModalOpen(false);
     };
 
     const handleDelete = (id: string) => {
@@ -35,53 +35,63 @@ const BookItem = ({ book }: BookProps) => {
 
     return (
         <div className={styles.bookItem}>
-            {isUpdating ? (
-                <div className={styles.ul}>
-                    <h2>Updating Book</h2>
-                    <label>
-                        Name:
-                        <input
-                            type="text"
-                            name="name"
-                            value={updatedBook.name}
-                            onChange={handleInputChange}
-                        />
-                    </label>
-                    <label>
-                        Price:
-                        <input
-                            type="number"
-                            name="price"
-                            value={updatedBook.price}
-                            onChange={handleInputChange}
-                        />
-                    </label>
-                    <label>
-                        Category:
-                        <input
-                            type="text"
-                            name="category"
-                            value={updatedBook.category}
-                            onChange={handleInputChange}
-                        />
-                    </label>
-                    <label>
-                        Description:
-                        <textarea
-                            name="description"
-                            value={updatedBook.description}
-                            onChange={handleInputChange}
-                        />
-                    </label>
-                    <button onClick={handleUpdate}>Update</button>
-                </div>
-            ) : (
-                <div className={styles.bookItem} onClick={() => setIsUpdating(true)}>
-                    <h3 className={styles.bookContent}>{book.name}</h3>
-                    <p className={styles.bookContent}>Price: ${book.price}</p>
-                    <p className={styles.bookContent}>Category: {book.category}</p>
-                    <p className={styles.bookContent}>Description: {book.description}</p>
-                    <button className={styles.bookButton} onClick={() => handleDelete(book.id)}>&times;</button>
+            <div className={styles.bookContent} onClick={() => setIsModalOpen(true)}>
+                <h3>{book.name}</h3>
+                <p>Price: ${book.price}</p>
+                <p>Category: {book.category}</p>
+                <p>Description: {book.description}</p>
+                <button className={styles.bookButton} onClick={() => handleDelete(book.id)}>
+                    &times;
+                </button>
+            </div>
+            {isModalOpen && (
+                <div className={styles.modalOverlay}>
+                    <div className={styles.modalContent}>
+                        <span className={styles.close} onClick={() => setIsModalOpen(false)}>
+                            &times;
+                        </span>
+                        <h2>Update Book</h2>
+                        <div className={styles.bookInput}>
+                            <label>
+                                Name:
+                                <input
+                                    type="text"
+                                    name="name"
+                                    value={updatedBook.name}
+                                    onChange={handleInputChange}
+                                />
+                            </label>
+                            <label>
+                                Price:
+                                <input
+                                    type="number"
+                                    name="price"
+                                    value={updatedBook.price}
+                                    onChange={handleInputChange}
+                                />
+                            </label>
+                            <label>
+                                Category:
+                                <input
+                                    type="text"
+                                    name="category"
+                                    value={updatedBook.category}
+                                    onChange={handleInputChange}
+                                />
+                            </label>
+                            <label>
+                                Description:
+                                <textarea
+                                    name="description"
+                                    value={updatedBook.description}
+                                    onChange={handleInputChange}
+                                />
+                            </label>
+                        </div>
+                        <button className={styles.updateButton} onClick={handleUpdate}>
+                            Update
+                        </button>
+                    </div>
                 </div>
             )}
         </div>

@@ -13,7 +13,7 @@ interface Props {
   readonly children: ReactNode;
 }
 
-export default function RootLayout({ children }: Props) {
+export default function RootLayout() {
   const [isAddBookOpen, setIsAddBookOpen] = useState(false);
 
   const handleOpenAddBook = () => {
