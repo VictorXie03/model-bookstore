@@ -29,9 +29,15 @@ const AddBookModal = ({ isOpen, onClose }: AddBookProps) => {
             [name]: value,
         }));
     };
-
+    const validateName = (name: string): boolean => {
+        return name.trim().length > 0;
+    };
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        if (!validateName(formData.name)) {
+            alert('Please enter a name.');
+            return;
+        }
         const newBook: Book = { ...formData, id: uuidv4() };
         dispatch(addBook(newBook));
         onClose();
