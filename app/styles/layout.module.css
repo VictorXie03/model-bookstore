@@ -242,4 +242,8 @@
   .bookContent {
     width: 25vw;
   }
+
+  .bookInput label {
+    font-size: 3vw;
+  }
 }
