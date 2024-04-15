@@ -213,6 +213,14 @@
   color: #333;
 }
 
+.imgCredit {
+  position: absolute;
+  bottom: 0.4vw;
+  right: 0.8vw;
+  font-size: 0.5vw;
+  color: aliceblue;
+}
+
 @media (max-width: 1220px) {
   .bookItem {
     height: 60vw;

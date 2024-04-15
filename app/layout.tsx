@@ -37,6 +37,7 @@ export default function RootLayout() {
           <section className={styles.container}>
             <BookList />
           </section>
+          <p className={styles.imgCredit}>Image by topntp26 on Freepik</p>
         </body>
       </html>
     </StoreProvider>
