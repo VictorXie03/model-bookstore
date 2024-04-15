@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { updateBook } from '../reducers/booksReducer';
 import { Book } from '../types';
 import styles from '../styles/layout.module.css';
+import { deleteBook } from '../reducers/booksReducer';
 
 interface BookProps {
     book: Book;
@@ -28,11 +29,15 @@ const BookItem = ({ book }: BookProps) => {
         setIsUpdating(false);
     };
 
+    const handleDelete = (id: string) => {
+        dispatch(deleteBook(id));
+    };
+
     return (
         <div className={styles.bookItem}>
             {isUpdating ? (
-                <div className={styles.popup}>
-                    <h2> Book</h2>
+                <div className={styles.ul}>
+                    <h2>Updating Book</h2>
                     <label>
                         Name:
                         <input
@@ -76,6 +81,7 @@ const BookItem = ({ book }: BookProps) => {
                     <p className={styles.bookContent}>Price: ${book.price}</p>
                     <p className={styles.bookContent}>Category: {book.category}</p>
                     <p className={styles.bookContent}>Description: {book.description}</p>
+                    <button className={styles.bookButton} onClick={() => handleDelete(book.id)}>&times;</button>
                 </div>
             )}
         </div>

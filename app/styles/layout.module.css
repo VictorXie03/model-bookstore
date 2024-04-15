@@ -7,6 +7,12 @@
   align-items: center;
 }
 
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .addButton {
   width: 8vw;
   height: 4vw;
@@ -16,6 +22,7 @@
   left: 47vw;
   right: 0;
   border-radius: 0.5vw;
+  font-size: 1vw;
 }
 
 .main {
@@ -36,7 +43,7 @@
   justify-content: center;
   gap: 8px;
   padding: 8px;
-  font-size: calc(10px + 2vmin);
+  font-size: 1.5vw;
 }
 
 .close {
@@ -69,7 +76,7 @@
 }
 
 .form-container button {
-  background-color: #4caf50;
+  background-color: red;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -86,44 +93,46 @@
 }
 
 .bookItem {
+  border-radius: 0.5vw;
+  position: relative;
   background-color: white;
+  margin-bottom: 2vw;
+  max-width: 20vw;
+}
+
+.bookButton {
+  border-radius: 0 0.5vw 0 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: grey;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 .bookContent {
-  display: inline-block;
-  padding-right: 10vw;
+  padding: 1vw;
+  width: 18vw;
+  word-wrap: break-word;
 }
 
 .ul {
-  display: inline-block;
   list-style-type: none;
-  margin: 0;
-  padding: 2vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
 }
 
-/* AddBookPopup.css */
-.popup-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 999;
-  width: 400px;
+.li {
+  margin: 10px;
 }
 
-.close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  font-size: 24px;
-  color: #aaa;
+.popup {
+  margin-bottom: 10vw;
 }
 
-.close:hover {
-  color: #333;
+.listTitle {
+  margin-left: 2vw;
 }

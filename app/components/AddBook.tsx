@@ -1,11 +1,10 @@
-// components/AddBookPopup.tsx
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBook } from '../reducers/booksReducer';
 import { Book } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 import styles from '../styles/layout.module.css';
-import './AddBookModal.css'; // Import the CSS file for modal styling
+import './AddBookModal.css';
 
 interface AddBookProps {
     isOpen: boolean;
@@ -44,10 +43,12 @@ const AddBookModal = ({ isOpen, onClose }: AddBookProps) => {
             {isOpen && (
                 <div className="modal-overlay">
                     <div className="modal-content">
-                        <button className={styles.close} onClick={onClose}>
-                            &times;
-                        </button>
-                        <h2>Add a Book</h2>
+                        <div className="modal-header">
+                            <h2>Add a Book</h2>
+                            <button className="close" onClick={onClose}>
+                                &times;
+                            </button>
+                        </div>
                         <div className={styles['form-container']}>
                             <form onSubmit={handleSubmit}>
                                 <label>
