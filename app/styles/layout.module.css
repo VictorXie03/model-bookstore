@@ -7,6 +7,16 @@
   align-items: center;
 }
 
+.addButton {
+  width: 8vw;
+  height: 4vw;
+  position: absolute;
+  top: 5vw;
+  bottom: 0;
+  left: 47vw;
+  right: 0;
+  border-radius: 0.5vw;
+}
 
 .main {
   grid-area: main;
@@ -27,31 +37,6 @@
   gap: 8px;
   padding: 8px;
   font-size: calc(10px + 2vmin);
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  overflow: auto;
-}
-
-.modal.open {
-  display: block;
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 10% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 600px;
 }
 
 .close {
@@ -98,4 +83,20 @@
 
 .form-container button:hover {
   background-color: #45a049;
+}
+
+.bookItem {
+  background-color: white;
+}
+
+.bookContent {
+  display: inline-block;
+  padding-right: 10vw;
+}
+
+.ul {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0;
+  padding: 2vw;
 }

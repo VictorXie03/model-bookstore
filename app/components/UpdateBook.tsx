@@ -32,7 +32,7 @@ const BookItem = ({ book }: BookProps) => {
         <div className={styles.bookItem}>
             {isUpdating ? (
                 <div className={styles.popup}>
-                    <h2>Edit Book</h2>
+                    <h2> Book</h2>
                     <label>
                         Name:
                         <input
@@ -71,11 +71,11 @@ const BookItem = ({ book }: BookProps) => {
                     <button onClick={handleUpdate}>Update</button>
                 </div>
             ) : (
-                <div onClick={() => setIsUpdating(true)}>
-                    <h3>{book.name}</h3>
-                    <p>Price: {book.price}</p>
-                    <p>Category: {book.category}</p>
-                    <p>Description: {book.description}</p>
+                <div className={styles.bookItem} onClick={() => setIsUpdating(true)}>
+                    <h3 className={styles.bookContent}>{book.name}</h3>
+                    <p className={styles.bookContent}>Price: ${book.price}</p>
+                    <p className={styles.bookContent}>Category: {book.category}</p>
+                    <p className={styles.bookContent}>Description: {book.description}</p>
                 </div>
             )}
         </div>

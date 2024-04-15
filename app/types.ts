@@ -6,4 +6,3 @@ export interface Book {
     description: string;
 }
 
-// Add other types as needed for actions, state, etc.

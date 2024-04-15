@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBook } from '../reducers/booksReducer';
 import { Book } from '../types';
@@ -10,7 +10,7 @@ interface AddBookProps {
     onClose: () => void;
 }
 
-const AddBook: FC<AddBookProps> = ({ isOpen, onClose }) => {
+const AddBook = ({ isOpen, onClose }: AddBookProps) => {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState<Omit<Book, 'id'>>({ name: '', price: 0, category: '', description: '' });
 
@@ -28,7 +28,6 @@ const AddBook: FC<AddBookProps> = ({ isOpen, onClose }) => {
         dispatch(addBook(newBook));
         onClose();
         setFormData({ name: '', price: 0, category: '', description: '' });
-        console.log(isOpen)
     };
 
     return (
@@ -57,7 +56,7 @@ const AddBook: FC<AddBookProps> = ({ isOpen, onClose }) => {
                         <button type="submit">Add</button>
                     </form>
                 </div>
-            </div> : <div></div>}
+            </div> : null}
         </>
     );
 };

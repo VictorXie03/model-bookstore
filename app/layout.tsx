@@ -32,9 +32,9 @@ export default function RootLayout({ children }: Props) {
           </section>
           <section className={styles.container}>
             <AddBook isOpen={isAddBookOpen} onClose={handleCloseAddBook} />
-            <button onClick={handleOpenAddBook}>Add a book</button>
+            <button className={styles.addButton} onClick={handleOpenAddBook}>Add a book</button>
           </section>
-          <section>
+          <section className={styles.container}>
             <BookList />
           </section>
         </body>
